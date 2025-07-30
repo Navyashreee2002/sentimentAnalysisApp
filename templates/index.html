@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AI-Powered Sentiment Analysis</h1>
+        <form method="POST" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="text">Enter Text (e.g., movie review)</label>
+                <textarea id="text" name="text" placeholder="Type your text here..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Analyze Sentiment</button>
+            <a href="{{ url_for('history') }}" class="btn">View History</a>
+        </form>
+        {% if sentiment %}
+        <div class="result">
+            <h2>Result</h2>
+            <p><strong>Text:</strong> {{ input_text }}</p>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
